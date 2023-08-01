@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="ko">
-
-<head>
-	<meta charset="UTF-8">
-	<title>HTML5 Input Attributes</title>
-    <style>
-        /* input{
+	<head>
+		<meta charset="UTF-8" />
+		<title>HTML5 Input Attributes</title>
+		<style>
+			/* input{
             border-width: 2px;
             border-style: solid;
             border-color: #333; 
@@ -18,32 +17,52 @@
         input:valid{
             border-color: #adc9ff;;
         } */
-    /* #email:focus {outline:2px solid #adc9ff;}
+			/* #email:focus {outline:2px solid #adc9ff;}
     #email:blur {outline:2px solid green;} */
-    </style>
-</head>
+		</style>
+	</head>
 
-<body>
-	<form>
-		<div class="email"><input type="email" id="email" name="email" pattern="[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*" required></div>
-        <div class="password"><input type="password" id="password" name="password" required></div>
-		<input type="submit" value="전송">
-	</form>
-    <script>
-        const email = document.getElementById("email");
-        const password = document.getElementById("password");
+	<body>
+		<form>
+			<div class="email">
+				<input
+					type="email"
+					id="email"
+					name="email"
+					pattern="[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*"
+					required
+				/>
+			</div>
+			<div class="password">
+				<input type="password" id="password" name="password" required />
+			</div>
+			<input type="submit" value="전송" />
+		</form>
+		<script>
+			(function () {
+				const email = document.getElementById('email');
+				const password = document.getElementById('password');
 
-        email.onfocus = function (e) {
-            email.style.outlineWidth = "2px";
-            email.style.outlineColor= "#adc9ff";
-        };
+				email.onfocus = function (e) {
+					email.style.outlineWidth = '2px';
+					email.style.outlineColor = '#adc9ff';
+				};
 
-        email.onblur = function (e) {
-            email.style.borderWidth = "2px";
-            email.style.borderColor= "#f77";
-        }
+				email.onblur = function (e) {
+					email.style.borderWidth = '2px';
+					email.style.borderColor = '#f77';
+				};
 
-    </script>
-</body>
-    
+				password.onfocus = function (e) {
+					password.style.outlineWidth = '2px';
+					password.style.outlineColor = '#adc9ff';
+				};
+
+				password.onblur = function (e) {
+					password.style.borderWidth = '2px';
+					password.style.borderColor = '#f77';
+				};
+			})();
+		</script>
+	</body>
 </html>
