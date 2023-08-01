@@ -30,20 +30,18 @@
 		<input type="submit" value="전송">
 	</form>
     <script>
-        let email = document.getElementById("email");
-        let password = document.getElementById("password");
+        const email = document.getElementById("email");
+        const password = document.getElementById("password");
 
-        email.onclick = function (e) {
+        email.onfocus = function (e) {
             email.style.outlineWidth = "2px";
             email.style.outlineColor= "#adc9ff";
         };
-        $(document).click(function(e){
-            if(e.target.id != 'email'){
-                email.style.outlineWidth = "2px";
-                email.style.outlineColor= "##f77";
-            }
-        });
 
+        email.onblur = function (e) {
+            email.style.borderWidth = "2px";
+            email.style.borderColor= "#f77";
+        }
 
     </script>
 </body>
