@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<title>HTML5 Input Attributes</title>
+    <style>
+        /* input{
+            border-width: 2px;
+            border-style: solid;
+            border-color: #333; 
+            padding: 10px;
+            outline: none;
+        }
+        input:not(:placeholder-shown){
+            border-color: #f77;
+        }
+        input:valid{
+            border-color: #adc9ff;;
+        } */
+    /* #email:focus {outline:2px solid #adc9ff;}
+    #email:blur {outline:2px solid green;} */
+    </style>
+</head>
+
+<body>
+	<form>
+		<div class="email"><input type="email" id="email" name="email" pattern="[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*" required></div>
+        <div class="password"><input type="password" id="password" name="password" required></div>
+		<input type="submit" value="전송">
+	</form>
+    <script>
+        let email = document.getElementById("email");
+        let password = document.getElementById("password");
+
+        email.onclick = function (e) {
+            email.style.outlineWidth = "2px";
+            email.style.outlineColor= "#adc9ff";
+        };
+        $(document).click(function(e){
+            if(e.target.id != 'email'){
+                email.style.outlineWidth = "2px";
+                email.style.outlineColor= "##f77";
+            }
+        });
+
+
+    </script>
+</body>
+    
+</html>
