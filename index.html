@@ -3,22 +3,22 @@
 	<head>
 		<meta charset="UTF-8" />
 		<title>HTML5 Input Attributes</title>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<style>
-			/* input{
-            border-width: 2px;
-            border-style: solid;
-            border-color: #333; 
-            padding: 10px;
-            outline: none;
-        }
-        input:not(:placeholder-shown){
-            border-color: #f77;
-        }
-        input:valid{
-            border-color: #adc9ff;;
-        } */
-			/* #email:focus {outline:2px solid #adc9ff;}
-    #email:blur {outline:2px solid green;} */
+			input {
+				border-width: 1px;
+				border-style: solid;
+				border-color: #dbdbdb;
+				border-image: initial;
+				box-sizing: border-box;
+				font-size: 15px;
+				line-height: 21px;
+				resize: none;
+				margin: 0px;
+			}
+			:required:hover {
+				background-color: #fafafa;
+			}
 		</style>
 	</head>
 
@@ -39,29 +39,92 @@
 			<input type="submit" value="전송" />
 		</form>
 		<script>
+			var isEmpty = function (value) {
+				if (
+					value == '' ||
+					value == null ||
+					value == undefined ||
+					(value != null &&
+						typeof value == 'object' &&
+						!Object.keys(value).length)
+				) {
+					return true;
+				} else {
+					return false;
+				}
+			};
 			(function () {
 				const email = document.querySelector('#email');
 				const password = document.querySelector('#password');
 
+				// email에 포커스 되었을 때
 				email.onfocus = function (e) {
+					email.style.borderWidth = '1px';
 					email.style.outlineWidth = '2px';
-					email.style.outlineColor = '#adc9ff';
+					// 보더가 붉은 상태에서 포커스 하면, 아웃라인 투명한 빨간색
+					if (!isEmpty(email.style.borderColor) && isEmpty(email.value)) {
+						email.style.outlineColor = '#ffd6d6';
+					} else {
+						// 그냥 포커스 하면, 아웃라인 투명한 하늘색
+						email.style.outlineColor = '#adc9ff';
+					}
 				};
 
+				// email에 포커스아웃 되었을 때
 				email.onblur = function (e) {
-					email.style.borderWidth = '2px';
-					email.style.borderColor = '#f77';
+					email.style.borderWidth = '1px';
+					if (isEmpty(email.value)) {
+						// 이메일 입력 칸을 선택 후, 바깥을 클릭하면 빨간 테두리
+						email.style.borderColor = '#f77';
+					} else {
+						// 이메일 입력 칸을 선택 후, 문자열을 입력한 후, 바깥을 클릭하면 회색 테두리
+						email.style.borderColor = '#dbdbdb';
+					}
 				};
 
+				// password에 포커스 되었을 때
 				password.onfocus = function (e) {
+					email.style.borderWidth = '1px';
 					password.style.outlineWidth = '2px';
-					password.style.outlineColor = '#adc9ff';
+					// 보더가 붉은 상태에서 포커스 하면, 아웃라인 투명한 빨간색
+					if (!isEmpty(password.style.borderColor) && isEmpty(password.value)) {
+						password.style.outlineColor = '#ffd6d6';
+					} else {
+						// 그냥 포커스 하면, 아웃라인 투명한 하늘색
+						password.style.outlineColor = '#adc9ff';
+					}
 				};
 
+				// email에 포커스아웃 되었을 때
 				password.onblur = function (e) {
-					password.style.borderWidth = '2px';
-					password.style.borderColor = '#f77';
+					password.style.borderWidth = '1px';
+					if (isEmpty(password.value)) {
+						// 이메일 입력 칸을 선택 후, 바깥을 클릭하면 빨간 테두리
+						password.style.borderColor = '#f77';
+					} else {
+						// 이메일 입력 칸을 선택 후, 문자열을 입력한 후, 바깥을 클릭하면 회색 테두리
+						password.style.borderColor = '#dbdbdb';
+					}
 				};
+
+				// 아웃라인이 투명한 빨간색에서 입력 시, 파란색으로 변경됨
+				$('#email').on('propertychange change paste input', function () {
+					var emailLength = $(this).val().length;
+					if ((emailLength = 1 && !isEmpty(email.style.borderColor))) {
+						console.log('1을 입력했어요');
+						//	email.style.outlineColor = '';
+						email.style.outlineWidth = '0px';
+						email.style.borderColor = '';
+					}
+					if (emailLength > 1) {
+						console.log('2이상 입력했어요');
+						email.style.outlineColor = '#adc9ff';
+						email.style.outlineWidth = '2px';
+					}
+					// if (isEmpty(e.value)) {
+					// 	email.style.borderColor = '#f77';
+					// }
+				});
 			})();
 		</script>
 	</body>
