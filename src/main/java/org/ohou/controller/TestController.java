@@ -23,4 +23,10 @@ public class TestController {
         m.put("test", "1234");
         return m;
     }
+
+    @RequestMapping(value="/login-success")
+    public String login(Model model){
+        model.addAttribute("test", "1234");
+        return "login-success";
+    }
 }
