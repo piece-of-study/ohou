@@ -1,4 +1,4 @@
-package org.ohou;
+package org.ohou.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-public class Main {
+public class TestController {
     @RequestMapping(value="/")
     public String index(Model model){
         model.addAttribute("test", "1234");
