@@ -10,7 +10,7 @@ import java.util.Map;
 
 @Controller
 public class TestController {
-    @RequestMapping(value="/")
+    @RequestMapping(value="/") 
     public String index(Model model){
         model.addAttribute("test", "1234");
         return "index";
