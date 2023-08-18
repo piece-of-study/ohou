@@ -9,9 +9,9 @@
         <!-- 기타 엔티티 클래스 추가 -->
         <properties>
             <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
-            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/study?useSSL=false"/>
-            <property name="hibernate.connection.username" value="user"/>
-            <property name="hibernate.connection.password" value="user"/>
+            <property name="hibernate.connection.url" value="jdbc:mysql://15.164.101.109:3306/study?useSSL=false"/>
+            <property name="hibernate.connection.username" value="ohou"/>
+            <property name="hibernate.connection.password" value="ohou"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/> <!-- 또는 create 등 -->
         </properties>

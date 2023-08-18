@@ -23,6 +23,6 @@ public class CustomUserDetailServiceImpl implements CustomUserDetailService {
         if (user == null){
             throw new UsernameNotFoundException("User not found");
         }
-        return (UserDetails) user;
+        return user;
     }
 }
