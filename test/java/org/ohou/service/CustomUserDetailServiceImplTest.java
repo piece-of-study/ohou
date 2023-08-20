@@ -3,6 +3,8 @@ package org.ohou.service;
 import static org.mockito.Mockito.when;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.ohou.model.User;
@@ -14,7 +16,7 @@ import static org.junit.Assert.*;
 
 public class CustomUserDetailServiceImplTest {
 
-    @Autowired
+    @InjectMocks
     private CustomUserDetailServiceImpl customUserDetailService;
 
     @Mock
