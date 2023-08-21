@@ -15,7 +15,7 @@
         <s:intercept-url pattern="/**" access="isAuthenticated()" />
         <s:form-login default-target-url="/login-success"/>
         <s:logout logout-url="/logout"/>
-        <s:csrf/>
+        <s:csrf disabled="true"/>
     </s:http>
     <s:authentication-manager>
         <s:authentication-provider>
@@ -31,17 +31,17 @@
           destroy-method="close">
           <property name="driverClassName"
                     value="com.mysql.cj.jdbc.Driver"/>
-          <property name="url" value="jdbc:mysql://localhost:3306/study?useSSL=false"/>
-          <property name="username" value="user"/>
-          <property name="password" value="user"/>
+          <property name="url" value="jdbc:mysql://15.164.101.109:3306/study?useSSL=false"/>
+          <property name="username" value="ohou"/>
+          <property name="password" value="ohou"/>
           <property name="defaultAutoCommit" value="true"/>
     </bean>
     <bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
     <s:authentication-manager alias="authenticationManager">
-        <s:authentication-provider user-service-ref="jdbcUserDetailsService"/>
+        <s:authentication-provider user-service-ref="customUserDetailsService"/>
     </s:authentication-manager>
 
-    <bean id="jdbcUserDetailsService" class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
+    <bean id="customUserDetailsService" class="org.ohou.service.CustomUserDetailServiceImpl">
         <property name="dataSource" ref="dataSource"/>
         <property name="usersByUsernameQuery" value="SELECT username, password, enabled FROM users WHERE username = ?"/>
         <property name="authoritiesByUsernameQuery" value="SELECT username, authority FROM authorities WHERE username = ?"/>
