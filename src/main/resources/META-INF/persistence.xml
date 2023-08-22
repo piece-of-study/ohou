@@ -1,19 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
-             version="2.2">
-    <persistence-unit name="my-persistence-unit" transaction-type="RESOURCE_LOCAL">
-        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>org.ohou.model.User</class>
-        <!-- 기타 엔티티 클래스 추가 -->
-        <properties>
-            <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
-            <property name="hibernate.connection.url" value="jdbc:mysql://15.164.101.109:3306/study?useSSL=false"/>
-            <property name="hibernate.connection.username" value="ohou"/>
-            <property name="hibernate.connection.password" value="ohou"/>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
-            <property name="hibernate.hbm2ddl.auto" value="update"/> <!-- 또는 create 등 -->
-        </properties>
-    </persistence-unit>
-</persistence>
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"-->
+<!--             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"-->
+<!--             version="2.2">-->
+<!--    <persistence-unit name="my-persistence-unit" transaction-type="RESOURCE_LOCAL">-->
+<!--        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>-->
+<!--        <class>org.ohou.model.User</class>-->
+<!--        &lt;!&ndash; 기타 엔티티 클래스 추가 &ndash;&gt;-->
+<!--        <properties>-->
+<!--            <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>-->
+<!--            <property name="hibernate.connection.url" value="jdbc:mysql://15.164.101.109:3306/study?useSSL=false&amp;allowPublicKeyRetrieval=true"/>-->
+<!--            <property name="hibernate.connection.username" value="ohou"/>-->
+<!--            <property name="hibernate.connection.password" value="ohou"/>-->
+<!--            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>-->
+<!--            <property name="hibernate.hbm2ddl.auto" value="update"/> &lt;!&ndash; 또는 create 등 &ndash;&gt;-->
+<!--        </properties>-->
+<!--    </persistence-unit>-->
+<!--</persistence>-->
