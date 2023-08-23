@@ -10,7 +10,9 @@ import org.mockito.MockitoAnnotations;
 import org.ohou.model.User;
 import org.ohou.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Repository;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -23,7 +25,11 @@ import static org.junit.Assert.*;
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/**/*.xml"})
 //@ContextConfiguration(locations = {"classpath:/META-INF/persistence.xml","classpath:/WEB-INF/spring/**/*.xml"})
 //@ContextConfiguration(locations = "classpath:/WEB-INF/spring/context-security.xml")
+//@EnableJpaRepositories(basePackages = {"org.ohou.repository"}) // com.my.jpa.repository 하위에 있는 jpaRepository를 상속한 repository scan
 public class CustomUserDetailServiceImplTest {
+
+    @Autowired
+    UserRepository userRepository;
 
     @Test
     public void test1(){}
@@ -31,8 +37,12 @@ public class CustomUserDetailServiceImplTest {
 //    @InjectMocks
 //    private CustomUserDetailServiceImpl customUserDetailService;
 //
-//    @Mock
-//    private UserRepository userRepository;
+
+    @Test
+    public void test2(){
+        userRepository.findAll();
+//        userRepository.findbyUserName();
+    }
 //
 //    @Before
 //    public void setup(){

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:tx="http://www.springframework.org/schema/tx"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns="http://www.springframework.org/schema/data/jpa"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+    https://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/data/jpa
+    https://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+    http://www.springframework.org/schema/tx
+    https://www.springframework.org/schema/tx/spring-tx.xsd
+"
+>
+
+    <repositories base-package="org.ohou.repository" />
+
+    <beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <beans:property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <beans:property name="url" value="jdbc:mysql://15.164.101.109:3306/ohou?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=Asia/Seoul"/>
+        <beans:property name="username" value="ohou"/>
+        <beans:property name="password" value="ohou"/>
+    </beans:bean>
+
+    <beans:bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+    </beans:bean>
+    <beans:bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <beans:property name="dataSource" ref="dataSource"/>
+        <beans:property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
+    </beans:bean>
+
+    <beans:bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <beans:property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </beans:bean>
+
+    <tx:annotation-driven />
+</beans:beans>
