@@ -12,6 +12,7 @@
         <s:intercept-url pattern="/favicon.ico" access="permitAll" />
         <s:intercept-url pattern="/user/login" access="isAnonymous()" />
         <s:intercept-url pattern="/user/join" access="isAnonymous()" />
+        <s:intercept-url pattern="/user/join-success" access="isAnonymous()" />
         <s:intercept-url pattern="/**" access="isAuthenticated()" />
         <s:form-login default-target-url="/login-success"/>
         <s:logout logout-url="/logout"/>

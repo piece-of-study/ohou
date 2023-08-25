@@ -54,6 +54,10 @@ public class User implements UserDetails {
         this.enabled = enabled;
     }
 
+    public void setAuthorities(Set<Authority> authorities) {
+        this.authorities = authorities;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         // 사용자의 권한 정보를 반환하는 코드
