@@ -19,8 +19,8 @@ public class User implements UserDetails {
     private String password;
     private byte enabled;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<Authority> authorities;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Authority> authorities = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -61,7 +61,7 @@ public class User implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         // 사용자의 권한 정보를 반환하는 코드
-        Set<GrantedAuthority> authorities = new HashSet<>();
+        Set<SimpleGrantedAuthority> authorities = new HashSet<>();
 
         for(Authority authority : this.authorities) {
             authorities.add(new SimpleGrantedAuthority(authority.getAuthority()));
@@ -88,4 +88,6 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return enabled == 1;
     }
+
+
 }

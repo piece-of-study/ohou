@@ -10,11 +10,11 @@ public class Authority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String username;
+    //private String username;
     private String authority;
 
-    @ManyToOne
-    @JoinColumn(name ="username", insertable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name ="username", referencedColumnName = "username")
     private User user;
 
     public Long getId() {
@@ -47,5 +47,15 @@ public class Authority {
 
     public String getAuthority() {
         return authority;
+    }
+
+    @Override
+    public String toString() {
+        return "Authority{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", authority='" + authority + '\'' +
+                ", user=" + user +
+                '}';
     }
 }
