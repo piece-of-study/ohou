@@ -11,6 +11,7 @@
         <s:intercept-url pattern="/resources/**" access="permitAll" />
         <s:intercept-url pattern="/favicon.ico" access="permitAll" />
         <s:intercept-url pattern="/user/login" access="isAnonymous()" />
+<!--        <s:intercept-url pattern="/login-success" access="hasRole('USER')" />-->
         <s:intercept-url pattern="/user/join" access="isAnonymous()" />
         <s:intercept-url pattern="/user/join-success" access="isAnonymous()" />
         <s:intercept-url pattern="/**" access="isAuthenticated()" />
@@ -26,28 +27,6 @@
             </s:user-service>
         </s:authentication-provider>
     </s:authentication-manager>
-
-<!--    <bean id="dataSource"-->
-<!--          class="org.apache.commons.dbcp2.BasicDataSource"-->
-<!--          destroy-method="close">-->
-<!--          <property name="driverClassName"-->
-<!--                    value="com.mysql.cj.jdbc.Driver"/>-->
-<!--          <property name="url" value="jdbc:mysql://15.164.101.109:3306/study?useSSL=false&amp;allowPublicKeyRetrieval=true"/>-->
-<!--          <property name="username" value="ohou"/>-->
-<!--          <property name="password" value="ohou"/>-->
-<!--          <property name="defaultAutoCommit" value="true"/>-->
-<!--    </bean>-->
-<!--    <bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />-->
-<!--    <s:authentication-manager alias="authenticationManager">-->
-<!--        <s:authentication-provider user-service-ref="customUserDetailsService"/>-->
-<!--    </s:authentication-manager>-->
-
-<!--    <bean id="customUserDetailsService" class="org.ohou.service.CustomUserDetailServiceImpl">-->
-<!--        <property name="dataSource" ref="dataSource"/>-->
-<!--        <property name="usersByUsernameQuery" value="SELECT username, password, enabled FROM users WHERE username = ?"/>-->
-<!--        <property name="authoritiesByUsernameQuery" value="SELECT username, authority FROM authorities WHERE username = ?"/>-->
-<!--        <property name="passwordEncoder" ref="passwordEncoder"/>-->
-<!--    </bean>-->
 
     <bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
     <bean id="customUserDetailsService" class="org.ohou.service.CustomUserDetailServiceImpl"/>

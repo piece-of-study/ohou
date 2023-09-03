@@ -16,6 +16,18 @@ public class CustomUserDetailServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findByUsername(username);
+         org.ohou.model.User user = userRepository.findByUsername(username);
+
+         if(user == null) {
+             throw new UsernameNotFoundException("사용자를 찾을 수 없습니다. : " + username);
+         }
+
+         UserDetails userDetails = User.builder()
+                 .username(user.getUsername())
+                 .password(user.getPassword())
+                 .roles("USER")
+                 .build();
+
+        return userDetails;
     }
 }
