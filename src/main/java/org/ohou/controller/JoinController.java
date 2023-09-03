@@ -35,16 +35,11 @@ public class JoinController {
         User user = new User();
         user.setUsername(userDto.getUsername());
         user.setPassword(userDto.getPassword());
-       // user.setAuthorities(userDto.getAuthorities());
-        Authority authority = new Authority();
-        authority.setAuthority("ROLE_USER");
-        authority.setUser(user);
 
-        user.getAuthorities().add(authority);
 
-//        for(Authority authority : userDto.getAuthorities()){
-//            authority.setUser(user);
-//        }
+        for(Authority authority : userDto.getAuthorities()){
+            authority.setUser(user);
+        }
         userRepository.save(user);
         return "/join-success";
     }
