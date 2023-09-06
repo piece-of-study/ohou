@@ -22,11 +22,15 @@
     <link href="<c:url value="/resources/css/test.css"/>" rel="stylesheet"/>
 </head>
 <body>
+<sec:authorize access="!isAuthenticated()">
+    <a href="/user/login">로그인</a><br>
+    <a href="/join">회원가입</a><br>
+</sec:authorize>
 <sec:authorize access="isAuthenticated()">
     <h5><%=name %>님, 반갑습니다.</h5>
+    <a href="/logout">로그아웃</a><br>
+</sec:authorize>
     ${test}
     <p>red</p>
-</sec:authorize>
-
 </body>
 </html>
